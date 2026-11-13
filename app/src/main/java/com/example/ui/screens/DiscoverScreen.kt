@@ -23,10 +23,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AutoAwesome
+import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.LiveTv
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Schedule
+import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.WorkspacePremium
@@ -72,6 +75,12 @@ import com.example.model.UserProfile
 import com.example.ui.i18n.LocalAppStrings
 import com.example.ui.theme.MonoFinanceFamily
 
+private data class GalleryPhoto(
+    val resId: Int,
+    val title: String,
+    val subtitle: String
+)
+
 @Composable
 fun DiscoverScreen(
     userProfile: UserProfile?,
@@ -90,23 +99,48 @@ fun DiscoverScreen(
     val liveCourses = remember(courses) { courses.filter { it.isLiveNow } }
     var selectedTeacher by remember { mutableStateOf<TeacherProfile?>(null) }
 
+    val galleryPhotos = remember {
+        listOf(
+            GalleryPhoto(
+                resId = R.drawable.img_ct_banner,
+                title = "COMMERCETIME Coaching Center",
+                subtitle = "Class XI, XII, B.Com, BBA, MBA & CA Foundation"
+            ),
+            GalleryPhoto(
+                resId = R.drawable.img_apurba_podium,
+                title = "Apurba Sarkar (M.COM, MBA)",
+                subtitle = "14+ Years Teaching Experience • Purulia"
+            ),
+            GalleryPhoto(
+                resId = R.drawable.img_apurba_students,
+                title = "Teachers Day Celebration",
+                subtitle = "Apurba Da with COMMERCETIME students"
+            ),
+            GalleryPhoto(
+                resId = R.drawable.img_apurba_stage,
+                title = "Annual Commerce Meet",
+                subtitle = "Student awards & mentorship session"
+            )
+        )
+    }
+
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
         verticalArrangement = Arrangement.spacedBy(18.dp)
     ) {
-        // Editorial Welcome Hero
+        // 1. Clean COMMERCETIME Hero Card
         item {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(176.dp)
+                    .height(206.dp)
                     .clip(RoundedCornerShape(22.dp))
                     .clickable(onClick = onOpenAiMentor)
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.img_hero_academy),
-                    contentDescription = "Commerce Classes Hub academy",
+                    painter = painterResource(id = R.drawable.img_ct_banner),
+                    contentDescription = "COMMERCETIME banner featuring Apurba Sarkar",
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
@@ -114,48 +148,198 @@ fun DiscoverScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(
-                            Brush.horizontalGradient(
-                                colors = listOf(Color(0xEC0B2545), Color(0x880B2545))
+                            Brush.verticalGradient(
+                                colors = listOf(Color(0x440B2545), Color(0xF00B2545))
                             )
                         )
                 )
                 Column(
                     modifier = Modifier
-                        .align(Alignment.CenterStart)
+                        .align(Alignment.BottomStart)
                         .padding(18.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    Surface(
+                        color = MaterialTheme.colorScheme.tertiary,
+                        shape = RoundedCornerShape(50)
                     ) {
-                        Icon(
-                            imageVector = Icons.Filled.AutoAwesome,
-                            contentDescription = null,
-                            tint = Color(0xFFF0C45A),
-                            modifier = Modifier.size(16.dp)
-                        )
                         Text(
-                            text = "WELCOME, ${(userProfile?.displayName ?: "SCHOLAR").uppercase()}",
+                            text = "APURBA DA'S CLASSES • CLASS 11, 12 & B.COM",
                             style = MaterialTheme.typography.labelSmall,
-                            color = Color(0xFFF0C45A)
+                            color = MaterialTheme.colorScheme.onTertiary,
+                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 3.dp)
                         )
                     }
                     Text(
-                        text = "Master Accounting, Tax & Markets",
-                        style = MaterialTheme.typography.headlineSmall,
+                        text = "COMMERCETIME",
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold,
                         color = Color.White
                     )
                     Text(
-                        text = "Wallet Credits: ₹${userProfile?.walletCredits ?: 500} • Streak: ${userProfile?.studyStreakDays ?: 1}d",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = Color(0xFFBAE6FD)
+                        text = "Teach By: Apurba Sarkar (M.COM, MBA) • 14+ Years Exp",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color(0xFFE2E8F0)
                     )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        Text(
+                            text = "Credits: ₹${userProfile?.walletCredits ?: 500}",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = Color(0xFFF0C45A),
+                            fontFamily = MonoFinanceFamily
+                        )
+                        Text(
+                            text = "• Tap for 24x7 AI Assistant",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = Color(0xFFBAE6FD)
+                        )
+                    }
                 }
             }
         }
 
-        // Search Field
+        // 2. Full Simple Home — Flagship Paid Batches (₹99, ₹149, ₹199, ₹249)
+        item {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column {
+                        Text(
+                            text = "Paid Batches — Apurba Sarkar",
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            text = "Simple & affordable Class 11, 12 & B.Com full access",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+
+                // Exact 4 Paid Batches in a clean 2x2 grid or stacked compact rows
+                val batchesToShow = CatalogData.curatedCourses.filter { it.id in CatalogData.flagshipBatchIds }
+                batchesToShow.forEach { batch ->
+                    val isEnrolled = batch.id in enrolledIds
+                    val shortTag = when (batch.id) {
+                        "batch_class_11_12" -> "CLASS 11 & 12 BOTH"
+                        "batch_bcom_1st_year" -> "B.COM 1ST YEAR (BOTH SEM)"
+                        "batch_bcom_1_2_year" -> "B.COM 1ST & 2ND YEAR"
+                        "batch_bcom_3_year" -> "B.COM ALL 3 YEARS FULL"
+                        else -> batch.category.uppercase()
+                    }
+                    Card(
+                        onClick = { onOpenCourse(batch) },
+                        colors = CardDefaults.cardColors(
+                            containerColor = if (batch.id == "batch_bcom_3_year") {
+                                MaterialTheme.colorScheme.primaryContainer
+                            } else {
+                                MaterialTheme.colorScheme.surface
+                            }
+                        ),
+                        shape = RoundedCornerShape(18.dp),
+                        border = BorderStroke(
+                            width = 1.dp,
+                            color = if (batch.id == "batch_bcom_3_year") {
+                                MaterialTheme.colorScheme.primary
+                            } else {
+                                MaterialTheme.colorScheme.outline
+                            }
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .testTag("flagship_batch_${batch.id}")
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(14.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .size(48.dp)
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .background(MaterialTheme.colorScheme.primary),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.School,
+                                    contentDescription = null,
+                                    tint = Color(0xFFF0C45A)
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.weight(1f),
+                                verticalArrangement = Arrangement.spacedBy(3.dp)
+                            ) {
+                                Text(
+                                    text = shortTag,
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.secondary,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    text = batch.title,
+                                    style = MaterialTheme.typography.titleSmall,
+                                    maxLines = 2,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                                Text(
+                                    text = "By ${batch.teacherName} • ${batch.durationHours}h classes",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            Column(
+                                horizontalAlignment = Alignment.End,
+                                verticalArrangement = Arrangement.spacedBy(4.dp)
+                            ) {
+                                Surface(
+                                    color = if (isEnrolled) {
+                                        MaterialTheme.colorScheme.secondaryContainer
+                                    } else {
+                                        MaterialTheme.colorScheme.primary
+                                    },
+                                    shape = RoundedCornerShape(12.dp)
+                                ) {
+                                    Text(
+                                        text = if (isEnrolled) strings.enrolledBadge else "₹${batch.priceInr} Only",
+                                        style = MaterialTheme.typography.labelLarge,
+                                        fontFamily = MonoFinanceFamily,
+                                        fontWeight = FontWeight.Bold,
+                                        color = if (isEnrolled) {
+                                            MaterialTheme.colorScheme.onSecondaryContainer
+                                        } else {
+                                            MaterialTheme.colorScheme.onPrimary
+                                        },
+                                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp)
+                                    )
+                                }
+                                if (batch.originalPriceInr > batch.priceInr && !isEnrolled) {
+                                    Text(
+                                        text = "₹${batch.originalPriceInr}",
+                                        style = MaterialTheme.typography.labelSmall.copy(
+                                            textDecoration = TextDecoration.LineThrough
+                                        ),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3. Simple Search & Class/Subject Filter
         item {
             OutlinedTextField(
                 value = searchQuery,
@@ -181,7 +365,6 @@ fun DiscoverScreen(
             )
         }
 
-        // 8 Commerce Category Chips
         item {
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -202,7 +385,7 @@ fun DiscoverScreen(
             }
         }
 
-        // Live Classes Strip
+        // 4. Live Classes Strip
         if (liveCourses.isNotEmpty()) {
             item {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -254,7 +437,7 @@ fun DiscoverScreen(
                                     verticalArrangement = Arrangement.spacedBy(6.dp)
                                 ) {
                                     Text(
-                                        text = liveCourse.category.uppercase(),
+                                        text = "${liveCourse.category.uppercase()} • ₹${liveCourse.priceInr}",
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.secondary
                                     )
@@ -283,7 +466,7 @@ fun DiscoverScreen(
             }
         }
 
-        // Featured Courses Header
+        // 5. All Filtered Courses Header
         item {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -295,7 +478,7 @@ fun DiscoverScreen(
                     style = MaterialTheme.typography.titleLarge
                 )
                 Text(
-                    text = "${courses.size} tracks",
+                    text = "${courses.size} batches",
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -318,14 +501,14 @@ fun DiscoverScreen(
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.img_commerce_study),
-                            contentDescription = "No courses found",
+                            contentDescription = "No batches found",
                             modifier = Modifier
                                 .height(130.dp)
                                 .clip(RoundedCornerShape(14.dp)),
                             contentScale = ContentScale.Crop
                         )
                         Text(
-                            text = "No matching courses found",
+                            text = "No matching batches found",
                             style = MaterialTheme.typography.titleMedium
                         )
                         TextButton(onClick = {
@@ -349,7 +532,7 @@ fun DiscoverScreen(
             }
         }
 
-        // Faculty Spotlight
+        // 6. Meet Apurba Sarkar & COMMERCETIME Faculty
         item {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Text(
@@ -363,7 +546,7 @@ fun DiscoverScreen(
                             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                             shape = RoundedCornerShape(18.dp),
                             border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
-                            modifier = Modifier.width(220.dp)
+                            modifier = Modifier.width(230.dp)
                         ) {
                             Column(
                                 modifier = Modifier.padding(14.dp),
@@ -373,18 +556,29 @@ fun DiscoverScreen(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                                 ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .size(40.dp)
-                                            .clip(CircleShape)
-                                            .background(MaterialTheme.colorScheme.primary),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Text(
-                                            text = teacher.name.take(2).uppercase(),
-                                            color = MaterialTheme.colorScheme.onPrimary,
-                                            style = MaterialTheme.typography.titleSmall
+                                    if (teacher.photoResId != null) {
+                                        Image(
+                                            painter = painterResource(id = teacher.photoResId),
+                                            contentDescription = teacher.name,
+                                            modifier = Modifier
+                                                .size(44.dp)
+                                                .clip(CircleShape),
+                                            contentScale = ContentScale.Crop
                                         )
+                                    } else {
+                                        Box(
+                                            modifier = Modifier
+                                                .size(44.dp)
+                                                .clip(CircleShape)
+                                                .background(MaterialTheme.colorScheme.primary),
+                                            contentAlignment = Alignment.Center
+                                        ) {
+                                            Text(
+                                                text = teacher.name.take(2).uppercase(),
+                                                color = MaterialTheme.colorScheme.onPrimary,
+                                                style = MaterialTheme.typography.titleSmall
+                                            )
+                                        }
                                     }
                                     Column {
                                         Text(
@@ -430,7 +624,112 @@ fun DiscoverScreen(
             }
         }
 
-        // Subscription Plans
+        // 7. COMMERCETIME Classroom Moments & Center Details
+        item {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Text(
+                    text = "COMMERCETIME Coaching Moments",
+                    style = MaterialTheme.typography.titleLarge
+                )
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    items(galleryPhotos, key = { it.title }) { photo ->
+                        Card(
+                            shape = RoundedCornerShape(18.dp),
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
+                            modifier = Modifier.width(240.dp)
+                        ) {
+                            Column {
+                                Image(
+                                    painter = painterResource(id = photo.resId),
+                                    contentDescription = photo.title,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(132.dp),
+                                    contentScale = ContentScale.Crop
+                                )
+                                Column(
+                                    modifier = Modifier.padding(12.dp),
+                                    verticalArrangement = Arrangement.spacedBy(2.dp)
+                                ) {
+                                    Text(
+                                        text = photo.title,
+                                        style = MaterialTheme.typography.titleSmall,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                    Text(
+                                        text = photo.subtitle,
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Card(
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
+                    shape = RoundedCornerShape(18.dp),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(
+                        modifier = Modifier.padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Text(
+                            text = CatalogData.CENTER_NAME + " — Features & Campus",
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                        Text(
+                            text = "• Smart AI Digital Board with AC Classroom & Recorded Classes\n" +
+                                "• Online & Offline Classes Available\n" +
+                                "• Teaching Medium: Bengali, English, Hindi\n" +
+                                "• High Quality Teaching & 24 x 7 E-Learning AI Assistant",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.LocationOn,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(16.dp)
+                            )
+                            Text(
+                                text = CatalogData.CENTER_ADDRESS,
+                                style = MaterialTheme.typography.labelMedium
+                            )
+                        }
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Call,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.size(16.dp)
+                            )
+                            Text(
+                                text = "${CatalogData.CENTER_PHONE} • ${CatalogData.CENTER_SOCIAL}",
+                                style = MaterialTheme.typography.labelMedium,
+                                fontFamily = MonoFinanceFamily
+                            )
+                        }
+                    }
+                }
+            }
+        }
+
+        // 8. Subscription Plans
         item {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Text(
@@ -495,7 +794,7 @@ fun DiscoverScreen(
                                 }
                             }
                             Text(
-                                text = if (plan.priceInr == 0) "Free Forever" else "₹${plan.priceInr} / ${plan.billingCycle}",
+                                text = if (plan.priceInr == 0) "Free Forever" else "₹${plan.priceInr} • ${plan.billingCycle}",
                                 style = MaterialTheme.typography.headlineSmall,
                                 fontFamily = MonoFinanceFamily,
                                 color = contentColor
@@ -528,7 +827,7 @@ fun DiscoverScreen(
                                     shape = RoundedCornerShape(12.dp),
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Text("Upgrade to ${plan.name}")
+                                    Text("Activate ${plan.name} (₹${plan.priceInr})")
                                 }
                             }
                         }
@@ -549,6 +848,17 @@ fun DiscoverScreen(
                     modifier = Modifier.padding(22.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
+                    if (teacher.photoResId != null) {
+                        Image(
+                            painter = painterResource(id = teacher.photoResId),
+                            contentDescription = teacher.name,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(160.dp)
+                                .clip(RoundedCornerShape(16.dp)),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
                     Text(text = teacher.name, style = MaterialTheme.typography.headlineSmall)
                     Text(
                         text = teacher.credentials,

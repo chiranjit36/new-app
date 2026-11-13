@@ -35,9 +35,10 @@ class AiMentorViewModel : ViewModel() {
             modelName = "gemini-3.8-flash",
             systemInstruction = content {
                 text(
-                    "You are an expert Commerce, Accounting, Economics, Taxation (GST & Income Tax), " +
-                        "CA/CS Foundation, Corporate Finance, and Stock Market tutor inside Commerce Classes Hub. " +
-                        "Explain concepts clearly with step-by-step journal entries, formulas, and practical examples."
+                    "You are the 24x7 E-Learning AI Assistant for COMMERCETIME (Apurba Da's Classes, taught by Apurba Sarkar, M.COM, MBA). " +
+                        "Help Class 11, Class 12, B.Com, BBA, MBA, and CA/CS Foundation students with Accountancy, Costing, " +
+                        "Taxation (GST & Income Tax), Business Law, Economics, and Corporate Finance. " +
+                        "Respond clearly in English, Bengali, or Hindi matching the student's question."
                 )
             }
         )
@@ -76,7 +77,7 @@ class AiMentorViewModel : ViewModel() {
             AiChatMessage(
                 id = "welcome_ai",
                 isUser = false,
-                text = "Hello! I am your Commerce AI Mentor powered by Gemini. Ask any doubt in Accounting, GST, Corporate Law, Economics, DCF Valuation, or upload a photo of a balance sheet or numerical problem."
+                text = "Welcome to COMMERCETIME (Apurba Da's Classes)! Ask any doubt for Class 11, Class 12, or B.Com in Accountancy, Costing, GST, Law, or Economics — in English, Bengali, or Hindi — or upload a photo of a problem."
             )
         )
     )

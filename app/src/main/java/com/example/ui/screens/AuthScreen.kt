@@ -97,16 +97,16 @@ fun AuthScreen(onAuthSuccess: () -> Unit) {
                 .align(Alignment.TopCenter),
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            // Editorial Hero Banner
+            // COMMERCETIME Banner Hero
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(230.dp)
+                    .height(235.dp)
                     .clip(RoundedCornerShape(24.dp))
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.img_hero_academy),
-                    contentDescription = "Commerce Classes Hub study lounge",
+                    painter = painterResource(id = R.drawable.img_ct_banner),
+                    contentDescription = "COMMERCETIME Apurba Da's Classes banner",
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
@@ -116,8 +116,8 @@ fun AuthScreen(onAuthSuccess: () -> Unit) {
                         .background(
                             Brush.verticalGradient(
                                 colors = listOf(
-                                    Color(0x330B2545),
-                                    Color(0xE60B2545)
+                                    Color(0x220B2545),
+                                    Color(0xEE0B2545)
                                 )
                             )
                         )
@@ -133,38 +133,36 @@ fun AuthScreen(onAuthSuccess: () -> Unit) {
                         shape = RoundedCornerShape(50)
                     ) {
                         Text(
-                            text = "EXECUTIVE COMMERCE ACADEMY",
+                            text = "APURBA DA'S CLASSES • PURULIA",
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onTertiary,
                             modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
                         )
                     }
                     Text(
-                        text = "Commerce Classes Hub",
+                        text = "COMMERCETIME",
                         style = MaterialTheme.typography.displaySmall,
                         color = Color.White
                     )
                     Text(
-                        text = "Master Accounting, Finance, Taxation, CA/CS & Stock Markets with live faculty & Gemini AI.",
+                        text = "Teach By: Apurba Sarkar (M.COM, MBA • 14+ Yrs Exp). Class 11, Class 12 & B.Com Batches.",
                         style = MaterialTheme.typography.bodyMedium,
                         color = Color(0xFFE2E8F0)
                     )
                 }
             }
 
-            // Subject Highlights
+            // Paid Batch Price Highlights
             FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 listOf(
-                    "Accounting",
-                    "Taxation & GST",
-                    "CA Foundation",
-                    "CS Foundation",
-                    "Corporate Finance",
-                    "Economics",
-                    "Stock Market"
+                    "Class 11 & 12 Both • ₹99",
+                    "B.Com 1st Year (2 Sem) • ₹149",
+                    "B.Com 1st & 2nd Year • ₹199",
+                    "B.Com All 3 Years • ₹249",
+                    "Bengali • English • Hindi"
                 ).forEach { tag ->
                     AssistChip(
                         onClick = {},
@@ -185,18 +183,18 @@ fun AuthScreen(onAuthSuccess: () -> Unit) {
                 ) {
                     AuthFeatureRow(
                         icon = Icons.Filled.PlayCircle,
-                        title = "Live & Recorded Masterclasses",
-                        subtitle = "Interactive classes, attendance tracking & downloadable notes."
+                        title = "Smart AI Digital Board & Recorded Classes",
+                        subtitle = "Online & Offline classes for Class XI, XII, B.Com, BBA, MBA & CA Foundation."
                     )
                     AuthFeatureRow(
                         icon = Icons.Filled.AutoAwesome,
-                        title = "Gemini AI Doubt Solver",
-                        subtitle = "Upload balance sheet photos or ask finance doubts 24/7."
+                        title = "24x7 E-Learning AI Assistant",
+                        subtitle = "Ask Accountancy, Costing, Tax & Law doubts in Bengali, English, or Hindi."
                     )
                     AuthFeatureRow(
                         icon = Icons.Filled.Verified,
-                        title = "Quizzes, Certificates & Multi-Role Panels",
-                        subtitle = "Verified credentials plus Student, Teacher & Admin views."
+                        title = "Zilla School More, Purulia • 8653767405",
+                        subtitle = "Full notes, attendance tracking, quizzes, certificates & Student/Teacher/Admin panels."
                     )
                 }
             }
@@ -272,7 +270,7 @@ fun AuthScreen(onAuthSuccess: () -> Unit) {
             }
 
             Text(
-                text = "Includes ₹500 starter referral credits on signup • Synced securely via Firebase",
+                text = "Includes ₹500 starter referral credits • COMMERCETIME (Apurba Da's Classes)",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.align(Alignment.CenterHorizontally)

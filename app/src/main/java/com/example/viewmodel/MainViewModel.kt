@@ -100,6 +100,7 @@ class MainViewModel(
         .map { profile ->
             when (profile?.preferredLanguage) {
                 "hi" -> AppLanguage.HI
+                "bn" -> AppLanguage.BN
                 "es" -> AppLanguage.ES
                 else -> AppLanguage.EN
             }
@@ -387,7 +388,7 @@ class MainViewModel(
         }
         viewModelScope.launch {
             _isBusy.value = true
-            val code = userProfile.value?.referralCode ?: "CHUB-USER"
+            val code = userProfile.value?.referralCode ?: "CT-USER"
             val result = repository.sendReferralInvite(friendName, code)
             _isBusy.value = false
             _actionMessage.value = result.fold(
@@ -425,7 +426,7 @@ class MainViewModel(
             )
             _isBusy.value = false
             _actionMessage.value = result.fold(
-                onSuccess = { "Course published to Commerce Classes Hub catalog!" },
+                onSuccess = { "Course published to COMMERCETIME catalog!" },
                 onFailure = { err -> err.localizedMessage ?: "Failed to publish course" }
             )
         }

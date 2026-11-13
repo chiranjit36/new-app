@@ -79,7 +79,7 @@ class CommerceRepository(private val db: FirebaseFirestore) {
                 ) ?: UserProfile(userId = userId, displayName = displayName)
             } else {
                 val safeName = displayName.ifBlank { "Commerce Scholar" }.take(75)
-                val code = "CHUB-${userId.take(4).uppercase()}"
+                val code = "CT-${userId.take(4).uppercase()}"
                 val payload = mutableMapOf<String, Any>(
                     "userId" to userId,
                     "displayName" to safeName,
@@ -99,8 +99,8 @@ class CommerceRepository(private val db: FirebaseFirestore) {
                 // Welcome notification
                 createNotificationInternal(
                     userId = userId,
-                    title = "Welcome to Commerce Classes Hub",
-                    body = "You received ₹500 starter referral credits. Explore Accounting, CA/CS, Taxation & Stock Markets!",
+                    title = "Welcome to COMMERCETIME",
+                    body = "Apurba Da's Classes: Class 11 & 12 (₹99) and B.Com batches (₹149/₹199/₹249) are ready. You received ₹500 starter credits!",
                     category = "system"
                 )
                 UserProfile(
@@ -217,8 +217,8 @@ class CommerceRepository(private val db: FirebaseFirestore) {
             docRef.set(payload).await()
             createNotificationInternal(
                 userId = uid,
-                title = "Course Published",
-                body = "\"${title.trim()}\" is now live in the Commerce Classes Hub catalog.",
+                title = "Batch Published",
+                body = "\"${title.trim()}\" is now live in the COMMERCETIME catalog.",
                 category = "system"
             )
             Result.success(courseId)
@@ -313,7 +313,7 @@ class CommerceRepository(private val db: FirebaseFirestore) {
     ): Result<String> {
         val uid = requireUserId()
         val safePaidAmount = (amountInr - walletDiscountInr).coerceAtLeast(0).toLong()
-        val txnRef = "CHUB-${UUID.randomUUID().toString().take(8).uppercase()}"
+        val txnRef = "CT-${UUID.randomUUID().toString().take(8).uppercase()}"
         val paymentId = "pay_${System.currentTimeMillis()}"
         val enrollmentRef = db.collection("users").document(uid).collection("enrollments").document(courseId)
         val paymentRef = db.collection("users").document(uid).collection("payments").document(paymentId)
@@ -610,7 +610,7 @@ class CommerceRepository(private val db: FirebaseFirestore) {
         val certRef = db.collection("users").document(userId).collection("certificates").document(certId)
         val existing = certRef.get().await()
         if (!existing.exists()) {
-            val certNum = "CHUB-2026-${UUID.randomUUID().toString().take(6).uppercase()}"
+            val certNum = "CT-2026-${UUID.randomUUID().toString().take(6).uppercase()}"
             certRef.set(
                 mapOf(
                     "userId" to userId,

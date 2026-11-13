@@ -82,7 +82,7 @@ fun TeacherPanelScreen(
                     }
                     Text("Teacher Workspace", style = MaterialTheme.typography.headlineSmall, color = Color.White)
                     Text(
-                        "Published Courses: ${teacherCourses.size} • Synced live to Commerce Classes Hub catalog",
+                        "Published Courses: ${teacherCourses.size} • Synced live to COMMERCETIME catalog",
                         style = MaterialTheme.typography.bodySmall,
                         color = Color(0xFFCBD5E1)
                     )

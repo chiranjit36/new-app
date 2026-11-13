@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "Commerce Hub"
+rootProject.name = "COMMERCETIME"
 
 include(":app")

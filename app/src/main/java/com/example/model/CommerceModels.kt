@@ -14,6 +14,7 @@ enum class AppRole(val key: String) {
 enum class AppLanguage(val code: String, val nativeLabel: String) {
     EN("en", "English"),
     HI("hi", "हिन्दी"),
+    BN("bn", "বাংলা"),
     ES("es", "Español")
 }
 
@@ -185,7 +186,8 @@ data class TeacherProfile(
     val experienceYears: Int,
     val rating: Double,
     val studentsTaught: String,
-    val bio: String
+    val bio: String,
+    val photoResId: Int? = null
 )
 
 data class CommerceCourse(

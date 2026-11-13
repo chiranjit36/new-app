@@ -364,7 +364,7 @@ fun CourseDetailScreen(
                             ) {
                                 Icon(Icons.Filled.Quiz, contentDescription = null)
                                 Text(
-                                    "Score 60% or higher to automatically unlock your verified Commerce Hub Certificate!",
+                                    "Score 60% or higher to automatically unlock your verified COMMERCETIME Certificate!",
                                     style = MaterialTheme.typography.bodySmall
                                 )
                             }

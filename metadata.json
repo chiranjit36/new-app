@@ -1,6 +1,6 @@
 {
-  "name": "Commerce Hub",
-  "description": "Commerce Classes Hub — Modern educational platform for Accounting, Business Studies, Economics, Finance, Taxation, CA/CS Foundation, and Stock Market courses with AI doubt solving, live/recorded classes, quizzes, certificates, and Student/Teacher/Admin panels.",
+  "name": "COMMERCETIME",
+  "description": "COMMERCETIME (Apurba Da's Classes) by Apurba Sarkar (M.Com, MBA, 14+ Yrs Exp) — Class 11 & 12 (₹99), B.Com 1st Year (₹149), B.Com 1st & 2nd Year (₹199), and B.Com All 3 Years (₹249), plus AI Doubt Solver, Live & Recorded Classes, Study Notes, Quizzes & Certificates.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

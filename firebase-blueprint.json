@@ -9,7 +9,7 @@
         "displayName": { "type": "string", "description": "Full display name" },
         "photoUrl": { "type": "string", "description": "Optional avatar URL" },
         "role": { "type": "string", "enum": ["student", "teacher", "admin"], "description": "Account role" },
-        "preferredLanguage": { "type": "string", "enum": ["en", "hi", "es"], "description": "UI language code" },
+        "preferredLanguage": { "type": "string", "enum": ["en", "hi", "bn", "es"], "description": "UI language code" },
         "subscriptionPlan": { "type": "string", "enum": ["free", "pro_monthly", "all_access_annual"], "description": "Active subscription tier" },
         "referralCode": { "type": "string", "description": "Unique referral code" },
         "walletCredits": { "type": "integer", "description": "Referral reward wallet balance in INR" },

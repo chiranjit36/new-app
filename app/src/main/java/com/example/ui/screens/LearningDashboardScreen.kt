@@ -295,7 +295,7 @@ fun LearningDashboardScreen(
                     ) {
                         Icon(Icons.Filled.EmojiEvents, contentDescription = null, tint = MaterialTheme.colorScheme.tertiary)
                         Text(
-                            "Complete a course or score 60%+ on any course quiz to earn your verified Commerce Hub Certificate.",
+                            "Complete a batch or score 60%+ on any quiz to earn your verified COMMERCETIME Certificate.",
                             style = MaterialTheme.typography.bodySmall
                         )
                     }
@@ -399,9 +399,14 @@ fun LearningDashboardScreen(
                         color = Color(0xFFB8831A)
                     )
                     Text(
-                        "Commerce Classes Hub",
+                        "COMMERCETIME",
                         style = MaterialTheme.typography.headlineSmall,
                         color = Color(0xFF0B2545)
+                    )
+                    Text(
+                        "Apurba Da's Classes • Apurba Sarkar",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = Color(0xFF0E7C6B)
                     )
                     HorizontalDivider(color = Color(0xFFD5DCE6))
                     Text("Awarded to", style = MaterialTheme.typography.bodySmall, color = Color(0xFF526075))

@@ -1,5 +1,6 @@
 package com.example.data
 
+import com.example.R
 import com.example.model.CommerceCourse
 import com.example.model.LessonItem
 import com.example.model.QuizQuestion
@@ -9,8 +10,16 @@ import com.example.model.TeacherProfile
 
 object CatalogData {
 
+    const val CENTER_NAME = "COMMERCETIME"
+    const val CENTER_SUBTITLE = "Apurba Da's Classes • A Unique Coaching Center for Commerce Students"
+    const val CENTER_ADDRESS = "Zilla School More, Near Rohan Fast Food, Purulia (W.B.)"
+    const val CENTER_PHONE = "8653767405"
+    const val CENTER_SOCIAL = "Facebook / YouTube : COMMERCETIME"
+
     val categories = listOf(
         "All",
+        "Class 11 & 12",
+        "B.Com",
         "Accounting",
         "Business Studies",
         "Economics",
@@ -23,657 +32,574 @@ object CatalogData {
 
     val teachers = listOf(
         TeacherProfile(
-            id = "teacher_raghav",
-            name = "CA Raghav Mehta",
-            credentials = "FCA, DISA (ICAI), B.Com (Hons)",
-            specialty = "Accounting, Taxation & CA Foundation",
+            id = "teacher_apurba",
+            name = "Apurba Sarkar",
+            credentials = "M.COM, MBA • Lead Mentor",
+            specialty = "Class XI, Class XII, B.Com, BBA, MBA & CA Foundation",
             experienceYears = 14,
-            rating = 4.9,
-            studentsTaught = "48,000+",
-            bio = "Former Big-4 Audit & Direct Tax Manager mentoring All-India Rankers in CA Foundation and Ind AS reporting for over 14 years."
+            rating = 5.0,
+            studentsTaught = "15,000+",
+            bio = "Founder of COMMERCETIME (Apurba Da's Classes) in Purulia, W.B. Teaching Accountancy, Costing, Taxation, and Finance in Bengali, English & Hindi medium for over 14 years with Smart AI Digital Board & AC Classroom.",
+            photoResId = R.drawable.img_apurba_podium
         ),
         TeacherProfile(
-            id = "teacher_ananya",
-            name = "Dr. Ananya Iyer",
-            credentials = "Ph.D. Management (IIM-B), MBA",
-            specialty = "Business Studies & Corporate Strategy",
+            id = "teacher_ranjit",
+            name = "Ranjit Kr. Sahis",
+            credentials = "M.A., M.Phil.",
+            specialty = "Economics & Business Communication",
             experienceYears = 11,
-            rating = 4.8,
-            studentsTaught = "31,500+",
-            bio = "Case-study educator specializing in organizational strategy, marketing frameworks, and Board/UG commerce excellence."
-        ),
-        TeacherProfile(
-            id = "teacher_vikram",
-            name = "Prof. Vikramaditya Rao",
-            credentials = "M.A. Economics (DSE), NET-JRF",
-            specialty = "Macroeconomics, Monetary Policy & Trade",
-            experienceYears = 16,
             rating = 4.9,
-            studentsTaught = "54,200+",
-            bio = "Renowned economics author simplifying fiscal multipliers, IS-LM curves, and RBI policy dynamics with real-world charts."
+            studentsTaught = "8,400+",
+            bio = "Senior faculty at COMMERCETIME guiding Class 11, 12 & B.Com Honours students in Microeconomics, Macroeconomics, and Indian Economy."
         ),
         TeacherProfile(
-            id = "teacher_meera",
-            name = "CFA Meera Krishnan",
-            credentials = "CFA Charterholder, FRM, M.Fin",
-            specialty = "Corporate Finance & Stock Market Basics",
+            id = "teacher_nayan",
+            name = "Nayan Kr. Majhi",
+            credentials = "M.Sc., B.Ed.",
+            specialty = "Business Mathematics & Statistics",
+            experienceYears = 10,
+            rating = 4.9,
+            studentsTaught = "7,900+",
+            bio = "Quantitative Aptitude & Business Statistics specialist simplifying probability, matrices, and financial mathematics for B.Com and CA Foundation."
+        ),
+        TeacherProfile(
+            id = "teacher_atanu",
+            name = "Atanu Majhi",
+            credentials = "M.Sc., B.Ed.",
+            specialty = "Quantitative Methods & Reasoning",
             experienceYears = 9,
-            rating = 4.9,
-            studentsTaught = "39,800+",
-            bio = "Ex-equity research analyst teaching DCF valuation, financial statement analysis, and disciplined retail wealth creation."
-        ),
-        TeacherProfile(
-            id = "teacher_siddharth",
-            name = "CS Siddharth Kapoor",
-            credentials = "FCS, LL.B., Insolvency Professional",
-            specialty = "CS Foundation & Corporate Law",
-            experienceYears = 12,
             rating = 4.8,
-            studentsTaught = "27,400+",
-            bio = "Practicing Company Secretary breaking down Companies Act 2013, secretarial standards, and board governance."
+            studentsTaught = "6,500+",
+            bio = "Dedicated faculty at COMMERCETIME helping Class XI, XII and B.Com students achieve top marks in numerical papers."
         )
+    )
+
+    // The 4 flagship affordable batches requested for COMMERCETIME
+    val flagshipBatchIds = setOf(
+        "batch_class_11_12",
+        "batch_bcom_1st_year",
+        "batch_bcom_1_2_year",
+        "batch_bcom_3_year"
     )
 
     val subscriptionPlans = listOf(
         SubscriptionPlanOption(
             id = "free",
-            name = "Starter Scholar",
+            name = "Starter Access",
             priceInr = 0,
-            billingCycle = "Free Forever",
+            billingCycle = "Free",
             badge = "BASIC",
             perks = listOf(
-                "Access free preview classes & study notes",
-                "5 daily AI Doubt Solver prompts",
-                "Track attendance & personal streaks"
+                "Preview classes & demo lectures by Apurba Sarkar",
+                "Daily attendance & streak tracker",
+                "24x7 E-Learning AI Assistant"
             )
         ),
         SubscriptionPlanOption(
             id = "pro_monthly",
-            name = "Commerce Pro",
-            priceInr = 999,
-            billingCycle = "per month",
+            name = "B.Com 1st Year Pass",
+            priceInr = 149,
+            billingCycle = "Both Semesters",
             badge = "POPULAR",
             perks = listOf(
-                "Unlimited live + recorded class access",
-                "Unlimited Gemini AI Doubt Solver with photo upload",
-                "Downloadable formula sheets & mock test series",
-                "Verified digital certificates on completion"
+                "Full access to B.Com Sem 1 & Sem 2 classes",
+                "Recorded Smart Digital Board lectures + PDF notes",
+                "Chapter quizzes & completion certificate"
             )
         ),
         SubscriptionPlanOption(
             id = "all_access_annual",
-            name = "CA/CS All-Access Pass",
-            priceInr = 7999,
-            billingCycle = "per year (Save 33%)",
+            name = "B.Com 3 Years Complete",
+            priceInr = 249,
+            billingCycle = "Full 3-Year Access",
             badge = "BEST VALUE",
             perks = listOf(
-                "All 8 commerce tracks + CA/CS Foundation bootcamps",
-                "1-on-1 faculty doubt clinics & mentorship",
-                "Personalized AI weekly study planner",
-                "Priority placement & internship prep workshops"
+                "All 6 Semesters of B.Com (1st, 2nd & 3rd Year)",
+                "Bengali, English & Hindi medium recorded lectures",
+                "24x7 Gemini AI Doubt Solver + Exam Mock Tests",
+                "Priority offline/online doubt support"
             )
         )
     )
 
     val curatedCourses: List<CommerceCourse> = listOf(
         CommerceCourse(
-            id = "course_accounting_mastery",
-            title = "Financial Accounting & IFRS Mastery",
-            category = "Accounting",
-            description = "Master double-entry bookkeeping, trial balances, depreciation, bank reconciliation, and Ind AS / IFRS financial statements from scratch.",
-            teacherId = "teacher_raghav",
-            teacherName = "CA Raghav Mehta",
-            teacherCredentials = "FCA, DISA (ICAI)",
-            priceInr = 1999,
-            originalPriceInr = 3499,
-            durationHours = 42,
+            id = "batch_class_11_12",
+            title = "Class 11 & 12 Both — Full Commerce Batch",
+            category = "Class 11 & 12",
+            description = "Complete Accountancy, Cost & Tax, Business Studies, and Economics for both Class XI & Class XII (WBCHSE / CBSE / ISC) by Apurba Sarkar.",
+            teacherId = "teacher_apurba",
+            teacherName = "Apurba Sarkar",
+            teacherCredentials = "M.COM, MBA • 14+ Yrs Exp",
+            priceInr = 99,
+            originalPriceInr = 999,
+            durationHours = 110,
             level = "Foundation",
-            ratingAvg = 4.9,
-            enrolledCount = 12480,
-            nextLiveSession = "LIVE NOW • Ind AS 115 Revenue Workshop",
+            ratingAvg = 5.0,
+            enrolledCount = 4820,
+            nextLiveSession = "LIVE NOW • Class 11 & 12 Accountancy Digital Board",
             isLiveNow = true,
             syllabusHighlights = listOf(
-                "Golden Rules & Journalizing Complex Entries",
-                "Bank Reconciliation & Rectification of Errors",
-                "P&L Account, Balance Sheet & Cash Flow Statement",
-                "Ind AS & IFRS Convergence Case Studies"
+                "Class 11: Journal, Ledger, Trial Balance, BRS & Final Accounts",
+                "Class 12: Partnership, Admission/Retirement, Company Shares & Cash Flow",
+                "Business Studies & Economics in Bengali, English & Hindi medium",
+                "Smart AI Digital Board Recorded Lectures + Solved PDF Notes"
             ),
             lessons = listOf(
                 LessonItem(
-                    id = "acc_l1",
-                    title = "Live Workshop: Revenue Recognition (Ind AS 115)",
-                    durationMinutes = 65,
+                    id = "c1112_l1",
+                    title = "Live Class: Partnership Accounts & Profit Appropriation (Class 12)",
+                    durationMinutes = 60,
                     isLive = true,
-                    scheduleLabel = "Live Now • Room A-101",
-                    summary = "Interactive walkthrough of the 5-step revenue model with real software & retail contracts.",
+                    scheduleLabel = "Live Now • Smart Digital Board",
+                    summary = "Apurba Sarkar solves Profit & Loss Appropriation Account and Capital Accounts step by step.",
                     keyTakeaways = listOf(
-                        "Identify distinct performance obligations in bundled contracts",
-                        "Allocate transaction price using standalone selling prices",
-                        "Distinguish point-in-time vs over-time recognition"
+                        "Interest on Capital vs Interest on Drawings rules",
+                        "Fixed vs Fluctuating Capital Account format"
                     )
                 ),
                 LessonItem(
-                    id = "acc_l2",
-                    title = "Double-Entry Mechanics & Trial Balance",
-                    durationMinutes = 48,
+                    id = "c1112_l2",
+                    title = "Recorded: Golden Rules of Accounting & Journal Entries (Class 11)",
+                    durationMinutes = 50,
                     isLive = false,
-                    scheduleLabel = "Recorded • HD 1080p",
-                    summary = "Build error-free ledgers and reconcile suspense accounts systematically.",
+                    scheduleLabel = "Recorded • Bengali / English / Hindi",
+                    summary = "Crystal-clear foundation of Personal, Real, and Nominal accounts with 25 solved transactions.",
                     keyTakeaways = listOf(
-                        "Assets + Expenses = Liabilities + Equity + Revenue",
-                        "Detect one-sided vs two-sided compensating errors"
-                    )
-                ),
-                LessonItem(
-                    id = "acc_l3",
-                    title = "Cash Flow Statement (Indirect Method)",
-                    durationMinutes = 55,
-                    isLive = false,
-                    scheduleLabel = "Recorded • HD 1080p",
-                    summary = "Convert accrual net profit into Operating, Investing, and Financing cash flows.",
-                    keyTakeaways = listOf(
-                        "Adjust non-cash items like depreciation and amortization",
-                        "Compute working capital movements accurately"
+                        "Debit what comes in, Credit what goes out",
+                        "Accrued & Prepaid adjustments in Final Accounts"
                     )
                 )
             ),
             studyMaterials = listOf(
                 StudyMaterialItem(
-                    id = "acc_m1",
-                    title = "Accounting Ratios & Balance Sheet Cheat Sheet",
-                    format = "PDF Guide",
-                    sizeLabel = "1.8 MB",
-                    contentPreview = "1. Current Ratio = Current Assets / Current Liabilities (Ideal 2:1)\n2. Quick Ratio = (Current Assets - Inventory - Prepaid) / Current Liabilities\n3. Debt-to-Equity = Total Debt / Shareholders' Equity\n4. ROE = Net Income / Average Shareholders' Equity\n5. Working Capital = Current Assets - Current Liabilities"
-                ),
-                StudyMaterialItem(
-                    id = "acc_m2",
-                    title = "50 Solved Journal & Ledger Practice Problems",
-                    format = "Workbook",
-                    sizeLabel = "3.2 MB",
-                    contentPreview = "Includes comprehensive adjustments for outstanding expenses, prepaid insurance, accrued income, bad debts provision, and depreciation under SLM & WDV methods."
+                    id = "c1112_m1",
+                    title = "Class 11 & 12 Final Accounts Adjustment Master Sheet",
+                    format = "PDF Notes",
+                    sizeLabel = "1.6 MB",
+                    contentPreview = "1. Closing Stock: Trading A/c (Cr) & Balance Sheet (Assets)\n2. Outstanding Expense: Add to Expense & Balance Sheet (Liabilities)\n3. Prepaid Expense: Deduct from Expense & Balance Sheet (Assets)\n4. Depreciation: P&L (Dr) & Deduct from Fixed Asset"
                 )
             ),
             quizQuestions = listOf(
                 QuizQuestion(
-                    id = "acc_q1",
-                    prompt = "Under the accrual basis of accounting, revenue is recognized when:",
-                    options = listOf(
-                        "Cash is physically deposited in the bank",
-                        "Performance obligation is satisfied and earned",
-                        "The customer places a verbal inquiry",
-                        "At the end of the fiscal year only"
-                    ),
-                    correctIndex = 1,
-                    explanation = "Accrual accounting recognizes revenue when earned (control transfers), regardless of cash receipt timing."
-                ),
-                QuizQuestion(
-                    id = "acc_q2",
-                    prompt = "Which item appears under Financing Activities in a Cash Flow Statement?",
-                    options = listOf(
-                        "Purchase of factory machinery",
-                        "Cash collected from trade receivables",
-                        "Repayment of long-term bank debentures",
-                        "Payment of supplier invoices"
-                    ),
+                    id = "c1112_q1",
+                    prompt = "Goodwill is classified under which type of account?",
+                    options = listOf("Nominal Account", "Personal Account", "Real Account (Intangible Asset)", "Liability Account"),
                     correctIndex = 2,
-                    explanation = "Financing activities reflect changes in equity and long-term borrowings, including debenture repayments."
+                    explanation = "Goodwill is an intangible asset, therefore it is a Real Account."
                 ),
                 QuizQuestion(
-                    id = "acc_q3",
-                    prompt = "A credit balance in the Bank Pass Book represents:",
-                    options = listOf(
-                        "Bank overdraft",
-                        "Favorable cash balance at bank",
-                        "Dishonored cheque",
-                        "Unrecorded bank charges"
-                    ),
+                    id = "c1112_q2",
+                    prompt = "In absence of a Partnership Deed, interest on partner's loan is allowed at:",
+                    options = listOf("12% p.a.", "6% p.a.", "9% p.a.", "No interest"),
                     correctIndex = 1,
-                    explanation = "From the bank's perspective, a customer's deposit is a liability, hence a credit balance."
+                    explanation = "Under the Indian Partnership Act 1932, interest on loan by a partner is 6% p.a."
                 )
+            )
+        ),
+        CommerceCourse(
+            id = "batch_bcom_1st_year",
+            title = "B.Com 1st Year — Both Semesters (Sem 1 & 2)",
+            category = "B.Com",
+            description = "Full access to B.Com 1st Year Semester 1 & Semester 2: Financial Accounting, Business Law, Cost Accounting Basics & Economics.",
+            teacherId = "teacher_apurba",
+            teacherName = "Apurba Sarkar",
+            teacherCredentials = "M.COM, MBA • 14+ Yrs Exp",
+            priceInr = 149,
+            originalPriceInr = 1499,
+            durationHours = 95,
+            level = "Foundation",
+            ratingAvg = 5.0,
+            enrolledCount = 3940,
+            nextLiveSession = "Today, 6:00 PM • B.Com Sem 1 Financial Accounting",
+            isLiveNow = true,
+            syllabusHighlights = listOf(
+                "Sem 1 & Sem 2 Complete University Syllabus Coverage",
+                "Consignment, Joint Venture, Branch & Departmental Accounts",
+                "Business Regulatory Framework & Partnership Law",
+                "Previous 10 Years University Paper Solutions"
+            ),
+            lessons = listOf(
+                LessonItem(
+                    id = "bc1_l1",
+                    title = "Live Class: Branch & Departmental Accounting (Sem 1)",
+                    durationMinutes = 65,
+                    isLive = true,
+                    scheduleLabel = "Today, 6:00 PM • AC Digital Studio",
+                    summary = "Debtors method and Stock & Debtors method solved cleanly for B.Com Honours & General.",
+                    keyTakeaways = listOf(
+                        "Invoice price loading adjustment in Branch Stock Account",
+                        "Inter-departmental transfer unrealized profit reserve"
+                    )
+                ),
+                LessonItem(
+                    id = "bc1_l2",
+                    title = "Recorded: Consignment Accounts & Abnormal Loss (Sem 2)",
+                    durationMinutes = 52,
+                    isLive = false,
+                    scheduleLabel = "Recorded • HD Digital Board",
+                    summary = "Calculate unsold stock valuation and abnormal loss claim with insurance adjustment.",
+                    keyTakeaways = listOf(
+                        "Include consignor + non-recurring consignee expenses in stock",
+                        "Normal loss inflates per-unit cost of remaining goods"
+                    )
+                )
+            ),
+            studyMaterials = listOf(
+                StudyMaterialItem(
+                    id = "bc1_m1",
+                    title = "B.Com 1st Year Sem 1 & 2 Important Suggestions & Formulas",
+                    format = "PDF Digest",
+                    sizeLabel = "2.2 MB",
+                    contentPreview = "Covers Consignment Valuation, Hire Purchase Interest Calculation, Departmental Allocation Ratios, and Indian Contract Act essentials."
+                )
+            ),
+            quizQuestions = listOf(
+                QuizQuestion(
+                    id = "bc1_q1",
+                    prompt = "In Consignment Accounts, Del Credere commission is paid to the consignee for:",
+                    options = listOf("Cash sales only", "Bearing bad debts risk on credit sales", "Storing goods safely", "Paying freight charges"),
+                    correctIndex = 1,
+                    explanation = "Del Credere commission compensates the consignee for guaranteeing collection from credit customers."
+                )
+            )
+        ),
+        CommerceCourse(
+            id = "batch_bcom_1_2_year",
+            title = "B.Com 1st & 2nd Year — Both Years Access (Sem 1–4)",
+            category = "B.Com",
+            description = "Combined 2-Year B.Com pack covering Semesters 1, 2, 3 & 4: Financial, Cost, Corporate Accounting, Income Tax & Business Stats.",
+            teacherId = "teacher_apurba",
+            teacherName = "Apurba Sarkar",
+            teacherCredentials = "M.COM, MBA • 14+ Yrs Exp",
+            priceInr = 199,
+            originalPriceInr = 2499,
+            durationHours = 180,
+            level = "Intermediate",
+            ratingAvg = 4.9,
+            enrolledCount = 3150,
+            nextLiveSession = "Tomorrow, 7:30 PM • Cost Sheet & Process Costing",
+            isLiveNow = false,
+            syllabusHighlights = listOf(
+                "Sem 1 & 2: Financial Accounting, Consignment, Branch & Law",
+                "Sem 3 & 4: Cost Accounting, Corporate Accounting & Direct Tax",
+                "Issue/Forfeiture of Shares, Redemption of Debentures & Goodwill",
+                "Joint Faculty: Apurba Sarkar & Nayan Kr. Majhi (Stats)"
+            ),
+            lessons = listOf(
+                LessonItem(
+                    id = "bc12_l1",
+                    title = "Live Workshop: Cost Sheet, Prime Cost & Factory Overheads",
+                    durationMinutes = 60,
+                    isLive = true,
+                    scheduleLabel = "Tomorrow, 7:30 PM",
+                    summary = "Prepare complete Cost Sheets and reconcile Cost vs Financial Profits.",
+                    keyTakeaways = listOf(
+                        "Direct Material + Direct Labour + Direct Expenses = Prime Cost",
+                        "Treatment of Opening & Closing WIP and Finished Goods"
+                    )
+                )
+            ),
+            studyMaterials = listOf(
+                StudyMaterialItem(
+                    id = "bc12_m1",
+                    title = "Cost & Corporate Accounting Workbook (Sem 1–4)",
+                    format = "PDF Workbook",
+                    sizeLabel = "3.4 MB",
+                    contentPreview = "Includes EOQ formula, FIFO/LIFO stores ledger, Process Costing abnormal gain/loss, and Amalgamation journal entries."
+                )
+            ),
+            quizQuestions = listOf(
+                QuizQuestion(
+                    id = "bc12_q1",
+                    prompt = "Prime Cost plus Works/Factory Overheads equals:",
+                    options = listOf("Cost of Production", "Factory / Works Cost", "Cost of Sales", "Gross Margin"),
+                    correctIndex = 1,
+                    explanation = "Works Cost = Prime Cost + Factory Overheads (adjusted for WIP)."
+                )
+            )
+        ),
+        CommerceCourse(
+            id = "batch_bcom_3_year",
+            title = "B.Com All 3 Years — Full Complete Access (Sem 1–6)",
+            category = "B.Com",
+            description = "Everything in B.Com 1st, 2nd & 3rd Year (All 6 Semesters): Financial, Cost, Corporate, Auditing, GST, Financial Management & Project Prep.",
+            teacherId = "teacher_apurba",
+            teacherName = "Apurba Sarkar",
+            teacherCredentials = "M.COM, MBA • 14+ Yrs Exp",
+            priceInr = 249,
+            originalPriceInr = 3999,
+            durationHours = 280,
+            level = "Advanced",
+            ratingAvg = 5.0,
+            enrolledCount = 5410,
+            nextLiveSession = "LIVE NOW • B.Com Sem 5/6 Financial Management & GST",
+            isLiveNow = true,
+            syllabusHighlights = listOf(
+                "Complete 3-Year B.Com (Semesters 1 to 6) Unlimited Access",
+                "Financial Management, Capital Budgeting, WACC & Ratio Analysis",
+                "Direct Tax, GST Compliance, Auditing & Corporate Governance",
+                "Bengali, English & Hindi Medium + 24x7 AI Study Support"
+            ),
+            lessons = listOf(
+                LessonItem(
+                    id = "bc3_l1",
+                    title = "Live Masterclass: Financial Management & Capital Budgeting",
+                    durationMinutes = 70,
+                    isLive = true,
+                    scheduleLabel = "Live Now • COMMERCETIME Hall",
+                    summary = "NPV, IRR, Payback Period & Leverages solved for B.Com 3rd Year Honours.",
+                    keyTakeaways = listOf(
+                        "Operating Leverage = Contribution / EBIT",
+                        "Combined Leverage = Operating Leverage x Financial Leverage"
+                    )
+                ),
+                LessonItem(
+                    id = "bc3_l2",
+                    title = "Recorded: Auditing & GST Input Tax Credit (Sem 5 & 6)",
+                    durationMinutes = 58,
+                    isLive = false,
+                    scheduleLabel = "Recorded • HD 1080p",
+                    summary = "Vouching, verification, auditor duties, and practical GST tax invoice rules.",
+                    keyTakeaways = listOf(
+                        "IGST credit utilization sequence under Sec 49(5)",
+                        "Internal Check vs Internal Audit distinctions"
+                    )
+                )
+            ),
+            studyMaterials = listOf(
+                StudyMaterialItem(
+                    id = "bc3_m1",
+                    title = "B.Com 3-Year Master Formula & Tax Compendium",
+                    format = "Complete Guide",
+                    sizeLabel = "4.1 MB",
+                    contentPreview = "All ratios, Leverages, EOQ, Standard Costing variances, Income Tax slab rates, and GST ITC rules in one handbook."
+                )
+            ),
+            quizQuestions = listOf(
+                QuizQuestion(
+                    id = "bc3_q1",
+                    prompt = "Financial Leverage measures the sensitivity of EPS to changes in:",
+                    options = listOf("Sales Revenue", "EBIT (Operating Profit)", "Fixed Factory Costs", "Working Capital"),
+                    correctIndex = 1,
+                    explanation = "Degree of Financial Leverage = % change in EPS / % change in EBIT."
+                )
+            )
+        ),
+        CommerceCourse(
+            id = "course_accounting_mastery",
+            title = "Financial Accounting & IFRS Mastery",
+            category = "Accounting",
+            description = "Double-entry bookkeeping, trial balances, depreciation, bank reconciliation, and Ind AS / IFRS statements.",
+            teacherId = "teacher_apurba",
+            teacherName = "Apurba Sarkar",
+            teacherCredentials = "M.COM, MBA",
+            priceInr = 99,
+            originalPriceInr = 799,
+            durationHours = 42,
+            level = "Foundation",
+            ratingAvg = 4.9,
+            enrolledCount = 2480,
+            nextLiveSession = "Sat, 5:00 PM • BRS & Depreciation",
+            isLiveNow = false,
+            syllabusHighlights = listOf("Journal & Ledger Mastery", "Cash Flow & Final Accounts"),
+            lessons = listOf(
+                LessonItem("acc_l1", "Trial Balance & Error Rectification", 48, false, "Recorded • HD", "Detect and rectify one-sided and two-sided accounting errors.", listOf("Suspense Account balancing"))
+            ),
+            studyMaterials = listOf(
+                StudyMaterialItem("acc_m1", "Accounting Ratios Cheat Sheet", "PDF Guide", "1.4 MB", "Current Ratio = CA / CL; Quick Ratio = (CA - Inventory) / CL; Debt-Equity = Total Debt / Equity.")
+            ),
+            quizQuestions = listOf(
+                QuizQuestion("acc_q1", "A credit balance in the Bank Pass Book indicates:", listOf("Overdraft", "Favorable bank balance", "Dishonored cheque", "Bank charges"), 1, "Customer deposits are liabilities for the bank, showing a credit balance.")
             )
         ),
         CommerceCourse(
             id = "course_business_studies",
-            title = "Strategic Business Management & Operations",
+            title = "Business Studies & Management Principles",
             category = "Business Studies",
-            description = "Explore organizational principles, Fayol & Taylor theories, marketing mix, consumer protection, and modern startup strategy.",
-            teacherId = "teacher_ananya",
-            teacherName = "Dr. Ananya Iyer",
-            teacherCredentials = "Ph.D. Management (IIM-B)",
-            priceInr = 1499,
-            originalPriceInr = 2499,
+            description = "Fayol & Taylor principles, Marketing Mix, Business Environment, and BBA/MBA foundational strategy.",
+            teacherId = "teacher_ranjit",
+            teacherName = "Ranjit Kr. Sahis",
+            teacherCredentials = "M.A., M.Phil.",
+            priceInr = 99,
+            originalPriceInr = 699,
             durationHours = 28,
             level = "Beginner",
             ratingAvg = 4.8,
-            enrolledCount = 8920,
-            nextLiveSession = "Today, 6:30 PM • Porter's 5 Forces Case",
+            enrolledCount = 1920,
+            nextLiveSession = "Mon, 6:30 PM • Marketing Mix",
             isLiveNow = false,
-            syllabusHighlights = listOf(
-                "Principles of Scientific & Administrative Management",
-                "Business Environment & PESTEL Analysis",
-                "Marketing Mix (4Ps) & Brand Positioning",
-                "Financial Planning & Capital Structure Decisions"
-            ),
+            syllabusHighlights = listOf("Management Principles", "Marketing & Consumer Protection"),
             lessons = listOf(
-                LessonItem(
-                    id = "bus_l1",
-                    title = "Live Case Study: Porter's 5 Forces in Indian Retail",
-                    durationMinutes = 50,
-                    isLive = true,
-                    scheduleLabel = "Today, 6:30 PM",
-                    summary = "Analyze competitive rivalry, supplier power, and quick-commerce disruption.",
-                    keyTakeaways = listOf(
-                        "Evaluate barriers to entry in D2C commerce",
-                        "Map substitute threats across omnichannel players"
-                    )
-                ),
-                LessonItem(
-                    id = "bus_l2",
-                    title = "Delegation vs Decentralization",
-                    durationMinutes = 38,
-                    isLive = false,
-                    scheduleLabel = "Recorded • HD 1080p",
-                    summary = "Master authority, responsibility, and accountability chains in scaling enterprises.",
-                    keyTakeaways = listOf(
-                        "Delegation is compulsory; decentralization is an optional policy choice",
-                        "Accountability can never be delegated upward or downward"
-                    )
-                )
+                LessonItem("bus_l1", "Fayol's 14 Principles of Management", 40, false, "Recorded • HD", "Real-world examples for Class 12 & BBA exams.", listOf("Unity of Command vs Unity of Direction"))
             ),
             studyMaterials = listOf(
-                StudyMaterialItem(
-                    id = "bus_m1",
-                    title = "Fayol's 14 Principles Flash Summary",
-                    format = "Revision Card",
-                    sizeLabel = "1.1 MB",
-                    contentPreview = "1. Division of Work  2. Authority & Responsibility  3. Discipline  4. Unity of Command  5. Unity of Direction  6. Subordination of Individual Interest  7. Remuneration  8. Centralization  9. Scalar Chain  10. Order  11. Equity  12. Stability of Tenure  13. Initiative  14. Esprit de Corps."
-                )
+                StudyMaterialItem("bus_m1", "Fayol's 14 Principles Card", "Revision PDF", "1.1 MB", "Division of Work, Authority, Discipline, Unity of Command, Unity of Direction, Scalar Chain, Esprit de Corps.")
             ),
             quizQuestions = listOf(
-                QuizQuestion(
-                    id = "bus_q1",
-                    prompt = "Which principle states that an employee should receive orders from only one superior?",
-                    options = listOf(
-                        "Unity of Direction",
-                        "Unity of Command",
-                        "Scalar Chain",
-                        "Division of Work"
-                    ),
-                    correctIndex = 1,
-                    explanation = "Unity of Command prevents dual subordination and conflicting instructions."
-                ),
-                QuizQuestion(
-                    id = "bus_q2",
-                    prompt = "Which element of the Marketing Mix involves warehousing and channel selection?",
-                    options = listOf("Product", "Price", "Place", "Promotion"),
-                    correctIndex = 2,
-                    explanation = "Place (Physical Distribution) covers channels, logistics, inventory, and warehousing."
-                )
+                QuizQuestion("bus_q1", "Receiving orders from only one superior is:", listOf("Unity of Direction", "Unity of Command", "Scalar Chain", "Equity"), 1, "Unity of Command prevents dual subordination.")
             )
         ),
         CommerceCourse(
             id = "course_economics_macro",
-            title = "Macro & Micro Economics Mastery",
+            title = "Micro & Macro Economics for Class 11–12 & B.Com",
             category = "Economics",
-            description = "Deep dive into demand elasticity, market structures, National Income (GDP), Money & Banking, and fiscal policy.",
-            teacherId = "teacher_vikram",
-            teacherName = "Prof. Vikramaditya Rao",
-            teacherCredentials = "M.A. Economics (DSE)",
-            priceInr = 1699,
-            originalPriceInr = 2999,
+            description = "Demand elasticity, market structures, National Income (GDP), Money & Banking, and fiscal policy.",
+            teacherId = "teacher_ranjit",
+            teacherName = "Ranjit Kr. Sahis",
+            teacherCredentials = "M.A., M.Phil.",
+            priceInr = 149,
+            originalPriceInr = 899,
             durationHours = 36,
             level = "Intermediate",
             ratingAvg = 4.9,
-            enrolledCount = 10340,
-            nextLiveSession = "LIVE NOW • RBI Repo Rate & Inflation",
-            isLiveNow = true,
-            syllabusHighlights = listOf(
-                "Consumer Equilibrium & Indifference Curve Analysis",
-                "Perfect Competition, Monopoly & Oligopoly",
-                "GDP Calculation: Value Added, Income & Expenditure",
-                "Central Bank Credit Control & Fiscal Deficit"
-            ),
-            lessons = listOf(
-                LessonItem(
-                    id = "eco_l1",
-                    title = "Live Session: Monetary Policy Tools & Liquidity",
-                    durationMinutes = 60,
-                    isLive = true,
-                    scheduleLabel = "Live Now • Studio B",
-                    summary = "Understand CRR, SLR, Repo Rate, and Open Market Operations with live yield data.",
-                    keyTakeaways = listOf(
-                        "Higher Repo Rate cools inflation by raising borrowing costs",
-                        "OMO purchases inject base money into commercial banks"
-                    )
-                ),
-                LessonItem(
-                    id = "eco_l2",
-                    title = "National Income Accounting (NDPfc vs GNPmp)",
-                    durationMinutes = 45,
-                    isLive = false,
-                    scheduleLabel = "Recorded • HD 1080p",
-                    summary = "Convert Gross to Net, Domestic to National, and Market Price to Factor Cost.",
-                    keyTakeaways = listOf(
-                        "Gross - Depreciation = Net",
-                        "Domestic + NFIA = National",
-                        "Market Price - Net Indirect Taxes = Factor Cost"
-                    )
-                )
-            ),
-            studyMaterials = listOf(
-                StudyMaterialItem(
-                    id = "eco_m1",
-                    title = "National Income Conversion Formula Matrix",
-                    format = "PDF Notes",
-                    sizeLabel = "1.4 MB",
-                    contentPreview = "NNP at FC (National Income) = GDP at MP - Depreciation + NFIA - Net Indirect Taxes.\nMultiplier (k) = 1 / (1 - MPC) = 1 / MPS."
-                )
-            ),
-            quizQuestions = listOf(
-                QuizQuestion(
-                    id = "eco_q1",
-                    prompt = "If Marginal Propensity to Consume (MPC) is 0.75, what is the investment multiplier?",
-                    options = listOf("2", "3", "4", "5"),
-                    correctIndex = 2,
-                    explanation = "Multiplier k = 1 / (1 - MPC) = 1 / (1 - 0.75) = 1 / 0.25 = 4."
-                ),
-                QuizQuestion(
-                    id = "eco_q2",
-                    prompt = "To convert Domestic Income into National Income, we add:",
-                    options = listOf(
-                        "Depreciation",
-                        "Net Factor Income from Abroad (NFIA)",
-                        "Indirect Taxes",
-                        "Subsidies"
-                    ),
-                    correctIndex = 1,
-                    explanation = "National = Domestic + Net Factor Income from Abroad (NFIA)."
-                )
-            )
-        ),
-        CommerceCourse(
-            id = "course_corporate_finance",
-            title = "Corporate Finance & DCF Valuation",
-            category = "Finance",
-            description = "Learn Time Value of Money, WACC, Capital Budgeting (NPV/IRR), Leverage, and 3-Statement DCF Modeling.",
-            teacherId = "teacher_meera",
-            teacherName = "CFA Meera Krishnan",
-            teacherCredentials = "CFA, FRM",
-            priceInr = 2999,
-            originalPriceInr = 4999,
-            durationHours = 46,
-            level = "Advanced",
-            ratingAvg = 4.9,
-            enrolledCount = 7410,
-            nextLiveSession = "Tomorrow, 8:00 PM • WACC & Terminal Value",
+            enrolledCount = 2340,
+            nextLiveSession = "Wed, 7:00 PM • National Income",
             isLiveNow = false,
-            syllabusHighlights = listOf(
-                "Time Value of Money & Bond Pricing",
-                "CAPM, Beta & Weighted Average Cost of Capital",
-                "NPV, IRR & Payback Period Capital Budgeting",
-                "Free Cash Flow to Firm (FCFF) Valuation"
-            ),
+            syllabusHighlights = listOf("GDP & National Income", "Monetary & Fiscal Policy"),
             lessons = listOf(
-                LessonItem(
-                    id = "fin_l1",
-                    title = "Live Modeling: Building a 5-Year DCF Model",
-                    durationMinutes = 75,
-                    isLive = true,
-                    scheduleLabel = "Tomorrow, 8:00 PM",
-                    summary = "Forecast FCFF, discount at WACC, and sensitize Terminal Growth Rate.",
-                    keyTakeaways = listOf(
-                        "FCFF = EBIT(1-t) + D&A - CapEx - Change in NWC",
-                        "Enterprise Value minus Net Debt equals Equity Value"
-                    )
-                )
+                LessonItem("eco_l1", "National Income Accounting (GDP to NNPfc)", 45, false, "Recorded • HD", "Value added, Income, and Expenditure methods.", listOf("Domestic + NFIA = National"))
             ),
             studyMaterials = listOf(
-                StudyMaterialItem(
-                    id = "fin_m1",
-                    title = "Corporate Finance Formula Compendium",
-                    format = "PDF Handbook",
-                    sizeLabel = "2.5 MB",
-                    contentPreview = "Cost of Equity (CAPM): Ke = Rf + Beta * (Rm - Rf)\nWACC = (E/V)*Ke + (D/V)*Kd*(1 - TaxRate)\nNPV = Sum[ CFt / (1+r)^t ] - Initial Outlay"
-                )
+                StudyMaterialItem("eco_m1", "National Income Conversion Matrix", "PDF Notes", "1.3 MB", "NNP at FC = GDP at MP - Depreciation + NFIA - Net Indirect Taxes.")
             ),
             quizQuestions = listOf(
-                QuizQuestion(
-                    id = "fin_q1",
-                    prompt = "A capital project should generally be accepted if:",
-                    options = listOf(
-                        "NPV is negative",
-                        "IRR is less than WACC",
-                        "NPV is positive and IRR > WACC",
-                        "Payback period exceeds asset life"
-                    ),
-                    correctIndex = 2,
-                    explanation = "Positive NPV indicates value creation above the firm's hurdle rate (WACC)."
-                )
+                QuizQuestion("eco_q1", "If MPC = 0.75, the investment multiplier is:", listOf("2", "3", "4", "5"), 2, "k = 1 / (1 - 0.75) = 4.")
             )
         ),
         CommerceCourse(
             id = "course_taxation_gst",
-            title = "Direct Tax & GST Practical Compliance",
+            title = "Income Tax & GST Practical Compliance",
             category = "Taxation",
-            description = "Master Income Tax heads, deductions under Chapter VI-A, TDS compliance, and GST Input Tax Credit & GSTR filings.",
-            teacherId = "teacher_raghav",
-            teacherName = "CA Raghav Mehta",
-            teacherCredentials = "FCA, DISA (ICAI)",
-            priceInr = 2499,
-            originalPriceInr = 3999,
+            description = "Heads of Income, Chapter VI-A deductions, TDS, and GST Input Tax Credit for B.Com & CA.",
+            teacherId = "teacher_apurba",
+            teacherName = "Apurba Sarkar",
+            teacherCredentials = "M.COM, MBA",
+            priceInr = 199,
+            originalPriceInr = 1299,
             durationHours = 38,
             level = "Intermediate",
             ratingAvg = 4.9,
-            enrolledCount = 9180,
-            nextLiveSession = "Friday, 7:00 PM • GST ITC Rule 36(4)",
+            enrolledCount = 2180,
+            nextLiveSession = "Fri, 7:00 PM • GST Set-off Rules",
             isLiveNow = false,
-            syllabusHighlights = listOf(
-                "Residential Status & Five Heads of Income",
-                "PGBP Depreciation & Capital Gains Indexation",
-                "TDS Sections (192, 194C, 194J) & Advance Tax",
-                "CGST, SGST, IGST & Input Tax Credit Ledger"
-            ),
+            syllabusHighlights = listOf("Five Heads of Income", "CGST/SGST/IGST ITC Ledger"),
             lessons = listOf(
-                LessonItem(
-                    id = "tax_l1",
-                    title = "Live Clinic: GST Input Tax Credit Set-off Rules",
-                    durationMinutes = 55,
-                    isLive = true,
-                    scheduleLabel = "Friday, 7:00 PM",
-                    summary = "Step-by-step utilization order for IGST, CGST, and SGST electronic credit ledgers.",
-                    keyTakeaways = listOf(
-                        "IGST credit must be exhausted completely before using CGST or SGST",
-                        "CGST credit cannot be utilized to pay SGST liability"
-                    )
-                )
+                LessonItem("tax_l1", "GST Input Tax Credit Set-off Sequence", 55, false, "Recorded • HD", "Section 49(5) credit utilization rules.", listOf("IGST exhausted first"))
             ),
             studyMaterials = listOf(
-                StudyMaterialItem(
-                    id = "tax_m1",
-                    title = "TDS Rates & Deductions Quick Reference",
-                    format = "Tax Table",
-                    sizeLabel = "1.6 MB",
-                    contentPreview = "Sec 194C: Contractors (1% Ind/HUF, 2% Others)\nSec 194J: Professional Fees (10%)\nSec 194I: Rent (2% Plant/Machinery, 10% Land/Building)\nSec 80C Max Limit: Rs. 1,50,000"
-                )
+                StudyMaterialItem("tax_m1", "TDS & Sec 80C Reference", "Tax Table", "1.5 MB", "Sec 194C (1%/2%), Sec 194J (10%), Sec 80C Max Rs 1,50,000.")
             ),
             quizQuestions = listOf(
-                QuizQuestion(
-                    id = "tax_q1",
-                    prompt = "Which GST credit must be exhausted first before utilizing CGST or SGST credits?",
-                    options = listOf("CGST", "SGST", "IGST", "Cess"),
-                    correctIndex = 2,
-                    explanation = "Under Section 49(5) of CGST Act, IGST input credit is utilized first against IGST, then CGST/SGST."
-                )
+                QuizQuestion("tax_q1", "Which GST credit must be exhausted first?", listOf("CGST", "SGST", "IGST", "Cess"), 2, "IGST credit must be exhausted completely before CGST or SGST.")
             )
         ),
         CommerceCourse(
             id = "course_ca_foundation",
-            title = "CA Foundation Complete Bootcamp (Papers 1–4)",
+            title = "CA Foundation Complete Prep (Papers 1–4)",
             category = "CA Foundation",
-            description = "Structured exam preparation covering Accounting, Business Laws, Quantitative Aptitude, and Business Economics with mock tests.",
-            teacherId = "teacher_raghav",
-            teacherName = "CA Raghav Mehta",
-            teacherCredentials = "FCA, DISA (ICAI)",
-            priceInr = 4999,
-            originalPriceInr = 7999,
+            description = "Accounting, Business Laws, Quantitative Aptitude (Nayan & Atanu Sir), and Business Economics by COMMERCETIME.",
+            teacherId = "teacher_apurba",
+            teacherName = "Apurba Sarkar & Team",
+            teacherCredentials = "COMMERCETIME Faculty",
+            priceInr = 249,
+            originalPriceInr = 2999,
             durationHours = 120,
             level = "Foundation",
             ratingAvg = 5.0,
-            enrolledCount = 15800,
-            nextLiveSession = "Daily 5:00 PM • ICAI RTP Marathon",
+            enrolledCount = 2800,
+            nextLiveSession = "Sun, 10:00 AM • ICAI RTP Marathon",
             isLiveNow = false,
-            syllabusHighlights = listOf(
-                "Paper 1: Accounting & Partnership / Company Accounts",
-                "Paper 2: Indian Contract Act, Sale of Goods & LLP",
-                "Paper 3: Time Value of Money, Permutations & Stats",
-                "Paper 4: Business Economics & Monetary Markets"
-            ),
+            syllabusHighlights = listOf("CA Paper 1–4 Full Coverage", "Quantitative Aptitude & Law"),
             lessons = listOf(
-                LessonItem(
-                    id = "ca_l1",
-                    title = "Indian Contract Act 1872: Offer, Acceptance & Consideration",
-                    durationMinutes = 62,
-                    isLive = false,
-                    scheduleLabel = "Recorded • HD 1080p",
-                    summary = "High-yield ICAI case law breakdowns for Paper 2 subjective questions.",
-                    keyTakeaways = listOf(
-                        "Carlill v. Carbolic Smoke Ball Co. — General Offer",
-                        "Stranger to contract vs Stranger to consideration"
-                    )
-                )
+                LessonItem("ca_l1", "Indian Contract Act 1872 Essentials", 62, false, "Recorded • HD", "Offer, acceptance, consideration & minor agreements.", listOf("Void ab initio agreements"))
             ),
             studyMaterials = listOf(
-                StudyMaterialItem(
-                    id = "ca_m1",
-                    title = "CA Foundation Landmark Case Laws Digest",
-                    format = "PDF Digest",
-                    sizeLabel = "2.9 MB",
-                    contentPreview = "Covers Balfour v. Balfour, Mohori Bibee v. Dharmodas Ghose, Hadley v. Baxendale, and Salomon v. Salomon & Co."
-                )
+                StudyMaterialItem("ca_m1", "Landmark Case Laws Digest", "PDF Digest", "2.4 MB", "Carlill v. Carbolic Smoke Ball Co., Mohori Bibee v. Dharmodas Ghose.")
             ),
             quizQuestions = listOf(
-                QuizQuestion(
-                    id = "ca_q1",
-                    prompt = "An agreement with a minor is:",
-                    options = listOf(
-                        "Voidable at the minor's option",
-                        "Void ab initio",
-                        "Valid if ratified at age 18",
-                        "Illegal"
-                    ),
-                    correctIndex = 1,
-                    explanation = "Per Mohori Bibee v. Dharmodas Ghose, a minor's agreement is void ab initio (void from the beginning)."
-                )
+                QuizQuestion("ca_q1", "An agreement with a minor is:", listOf("Voidable", "Void ab initio", "Valid", "Illegal"), 1, "Mohori Bibee v. Dharmodas Ghose established minor agreements are void ab initio.")
+            )
+        ),
+        CommerceCourse(
+            id = "course_corporate_finance",
+            title = "Corporate Finance, BBA/MBA & Stock Market Basics",
+            category = "Finance",
+            description = "Time Value of Money, Capital Budgeting (NPV/IRR), P/E & ROE stock screening, and financial modeling.",
+            teacherId = "teacher_nayan",
+            teacherName = "Nayan Kr. Majhi & Apurba Sarkar",
+            teacherCredentials = "COMMERCETIME Faculty",
+            priceInr = 199,
+            originalPriceInr = 1499,
+            durationHours = 40,
+            level = "Intermediate",
+            ratingAvg = 4.9,
+            enrolledCount = 1950,
+            nextLiveSession = "Sat, 8:00 PM • Equity Valuation",
+            isLiveNow = false,
+            syllabusHighlights = listOf("NPV, IRR & WACC", "Stock Exchange & Fundamental Ratios"),
+            lessons = listOf(
+                LessonItem("fin_l1", "Time Value of Money & NPV Analysis", 50, false, "Recorded • HD", "Discounting future cash flows for project decisions.", listOf("Accept if NPV > 0"))
+            ),
+            studyMaterials = listOf(
+                StudyMaterialItem("fin_m1", "Finance & Stock Ratio Checklist", "PDF Guide", "1.5 MB", "ROE = Net Profit / Equity; ROCE = EBIT / Capital Employed; P/E = Price / EPS.")
+            ),
+            quizQuestions = listOf(
+                QuizQuestion("fin_q1", "A capital project is financially viable when:", listOf("NPV < 0", "IRR < WACC", "NPV > 0 and IRR > WACC", "Debt is zero"), 2, "Positive NPV creates shareholder value above WACC.")
             )
         ),
         CommerceCourse(
             id = "course_cs_foundation",
-            title = "CS Foundation & Corporate Law Essentials",
+            title = "CS Foundation & Corporate Law",
             category = "CS Foundation",
-            description = "Build mastery in Company Law, Secretarial Practice, Business Communication, and Legal Aptitude for ICSI examinations.",
-            teacherId = "teacher_siddharth",
-            teacherName = "CS Siddharth Kapoor",
-            teacherCredentials = "FCS, LL.B.",
-            priceInr = 3499,
-            originalPriceInr = 5499,
-            durationHours = 72,
+            description = "Companies Act 2013, MOA/AOA, Board Meetings, and Secretarial Practice.",
+            teacherId = "teacher_atanu",
+            teacherName = "Atanu Majhi & Apurba Sarkar",
+            teacherCredentials = "COMMERCETIME Faculty",
+            priceInr = 199,
+            originalPriceInr = 1499,
+            durationHours = 60,
             level = "Foundation",
             ratingAvg = 4.8,
-            enrolledCount = 6350,
-            nextLiveSession = "Saturday, 11:00 AM • Board Resolutions",
+            enrolledCount = 1120,
+            nextLiveSession = "Thu, 6:00 PM • Companies Act Sec 173",
             isLiveNow = false,
-            syllabusHighlights = listOf(
-                "Incorporation of Companies & MOA/AOA",
-                "Board Meetings, Quorum & Secretarial Standards",
-                "Share Capital, Debentures & Dividend Rules",
-                "Business Communication & Legal Drafting"
-            ),
+            syllabusHighlights = listOf("MOA, AOA & Ultra Vires", "Board Meetings & Quorum"),
             lessons = listOf(
-                LessonItem(
-                    id = "cs_l1",
-                    title = "MOA vs AOA & Doctrine of Ultra Vires",
-                    durationMinutes = 48,
-                    isLive = false,
-                    scheduleLabel = "Recorded • HD 1080p",
-                    summary = "Understand charter documents, constructive notice, and indoor management.",
-                    keyTakeaways = listOf(
-                        "Royal British Bank v. Turquand — Doctrine of Indoor Management",
-                        "Ultra vires acts cannot be ratified even by unanimous shareholders"
-                    )
-                )
+                LessonItem("cs_l1", "MOA vs AOA & Indoor Management", 46, false, "Recorded • HD", "Doctrine of Constructive Notice & Turquand Rule.", listOf("4 Board Meetings/year"))
             ),
             studyMaterials = listOf(
-                StudyMaterialItem(
-                    id = "cs_m1",
-                    title = "Companies Act 2013 Section Navigator",
-                    format = "PDF Reference",
-                    sizeLabel = "2.1 MB",
-                    contentPreview = "Sec 2(68) Private Company, Sec 2(71) Public Company, Sec 149 Board Composition, Sec 173 Board Meetings (min 4/year)."
-                )
+                StudyMaterialItem("cs_m1", "Companies Act Quick Navigator", "PDF Notes", "1.8 MB", "Sec 2(68) Private Co, Sec 2(71) Public Co, Sec 173 Board Meetings.")
             ),
             quizQuestions = listOf(
-                QuizQuestion(
-                    id = "cs_q1",
-                    prompt = "What is the minimum number of Board Meetings a company must hold in a calendar year under Sec 173?",
-                    options = listOf("2", "3", "4", "6"),
-                    correctIndex = 2,
-                    explanation = "Every company must hold at least 4 Board Meetings every year with max 120 days gap between two meetings."
-                )
+                QuizQuestion("cs_q1", "Minimum Board Meetings per calendar year under Sec 173:", listOf("2", "3", "4", "6"), 2, "At least 4 Board Meetings every year.")
             )
         ),
         CommerceCourse(
             id = "course_stock_market",
-            title = "Stock Market Basics & Equity Investing",
+            title = "Stock Market Basics & Portfolio Investing",
             category = "Stock Market Basics",
-            description = "Learn how stock exchanges work, fundamental P/E & ROE screening, candlestick basics, IPO analysis, and risk management.",
-            teacherId = "teacher_meera",
-            teacherName = "CFA Meera Krishnan",
-            teacherCredentials = "CFA, FRM",
-            priceInr = 1299,
-            originalPriceInr = 2499,
+            description = "NSE/BSE mechanics, fundamental P/E & ROCE screening, IPO analysis, and risk management.",
+            teacherId = "teacher_apurba",
+            teacherName = "Apurba Sarkar",
+            teacherCredentials = "M.COM, MBA",
+            priceInr = 99,
+            originalPriceInr = 999,
             durationHours = 22,
             level = "Beginner",
             ratingAvg = 4.9,
-            enrolledCount = 19400,
-            nextLiveSession = "LIVE NOW • Reading Annual Reports",
-            isLiveNow = true,
-            syllabusHighlights = listOf(
-                "Primary vs Secondary Markets, NSE/BSE & SEBI",
-                "Fundamental Ratios: P/E, P/B, ROCE & Debt-Equity",
-                "Support, Resistance & Moving Averages",
-                "Position Sizing & Long-Term Compounding"
-            ),
+            enrolledCount = 3100,
+            nextLiveSession = "Sun, 4:00 PM • Live Annual Report Lab",
+            isLiveNow = false,
+            syllabusHighlights = listOf("NSE/BSE & SEBI Basics", "P/E, ROCE & Cash Flow Screening"),
             lessons = listOf(
-                LessonItem(
-                    id = "stk_l1",
-                    title = "Live Market Lab: Screening Quality Compounders",
-                    durationMinutes = 52,
-                    isLive = true,
-                    scheduleLabel = "Live Now • Market Lab",
-                    summary = "Evaluate ROCE > 20%, free cash flow conversion, and promoter pledging.",
-                    keyTakeaways = listOf(
-                        "Consistent high ROCE signals durable competitive moat",
-                        "Always verify CFO/PAT ratio >= 0.8 over 5 years"
-                    )
-                )
+                LessonItem("stk_l1", "Screening Quality Compounding Stocks", 45, false, "Recorded • HD", "Check ROCE > 18% and low debt-to-equity.", listOf("Verify CFO/PAT conversion"))
             ),
             studyMaterials = listOf(
-                StudyMaterialItem(
-                    id = "stk_m1",
-                    title = "10-Point Equity Fundamental Checklist",
-                    format = "Checklist PDF",
-                    sizeLabel = "1.2 MB",
-                    contentPreview = "1. Revenue CAGR > 12%  2. Operating Margin stability  3. ROCE > 18%  4. Debt/Equity < 0.5  5. Positive Free Cash Flow  6. Reasonable PEG < 1.5"
-                )
+                StudyMaterialItem("stk_m1", "10-Point Stock Checklist", "PDF Checklist", "1.1 MB", "Revenue growth, ROCE, Operating Margin, Debt/Equity, Free Cash Flow.")
             ),
             quizQuestions = listOf(
-                QuizQuestion(
-                    id = "stk_q1",
-                    prompt = "Which metric best measures how efficiently a company generates profits from all capital employed?",
-                    options = listOf("Dividend Yield", "ROCE", "Beta", "Face Value"),
-                    correctIndex = 1,
-                    explanation = "Return on Capital Employed (ROCE = EBIT / Capital Employed) measures overall capital efficiency."
-                )
+                QuizQuestion("stk_q1", "Which ratio measures return on total capital employed?", listOf("Dividend Yield", "ROCE", "Beta", "Face Value"), 1, "ROCE = EBIT / Capital Employed.")
             )
         )
     )

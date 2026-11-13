@@ -335,8 +335,8 @@ fun AiMentorScreen(
             }
         } else {
             // Personalized AI Study Roadmap
-            var selectedGoal by remember { mutableStateOf("CA Foundation") }
-            val goals = listOf("CA Foundation", "CS Foundation", "Stock Market Mastery", "Corporate Finance", "Taxation Pro")
+            var selectedGoal by remember { mutableStateOf("B.Com Honours") }
+            val goals = listOf("Class 11 & 12 Boards", "B.Com Honours", "CA Foundation", "CS Foundation", "Taxation Pro", "Stock Market Basics")
 
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),

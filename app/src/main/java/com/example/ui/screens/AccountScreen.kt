@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -57,6 +59,7 @@ import com.example.model.UserProfile
 import com.example.ui.i18n.LocalAppStrings
 import com.example.ui.theme.MonoFinanceFamily
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun AccountScreen(
     userProfile: UserProfile?,
@@ -178,7 +181,10 @@ fun AccountScreen(
                         Icon(Icons.Filled.Language, contentDescription = null, tint = MaterialTheme.colorScheme.secondary)
                         Text(strings.languageTitle, style = MaterialTheme.typography.titleMedium)
                     }
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
                         AppLanguage.entries.forEach { lang ->
                             FilterChip(
                                 selected = lang == currentLanguage,
@@ -216,7 +222,7 @@ fun AccountScreen(
                         )
                     }
                     Text(
-                        "Your Code: ${userProfile?.referralCode ?: "CHUB-USER"} • Earn ₹500 per classmate who joins.",
+                        "Your Code: ${userProfile?.referralCode ?: "CT-USER"} • Earn ₹500 per classmate who joins.",
                         style = MaterialTheme.typography.bodySmall
                     )
                     Row(

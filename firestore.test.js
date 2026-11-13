@@ -99,10 +99,16 @@ test("User profile: owner can create student profile and read/update safe fields
     })
   );
 
-  // Valid language update succeeds
+  // Valid language updates succeed (hi & bn)
   await assertSucceeds(
     aliceDoc.update({
       preferredLanguage: "hi",
+      updatedAt: serverDate(),
+    })
+  );
+  await assertSucceeds(
+    aliceDoc.update({
+      preferredLanguage: "bn",
       updatedAt: serverDate(),
     })
   );
