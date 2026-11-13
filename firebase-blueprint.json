@@ -1,0 +1,210 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated Commerce Classes Hub learner, teacher, or admin profile",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Firebase Auth UID" },
+        "displayName": { "type": "string", "description": "Full display name" },
+        "photoUrl": { "type": "string", "description": "Optional avatar URL" },
+        "role": { "type": "string", "enum": ["student", "teacher", "admin"], "description": "Account role" },
+        "preferredLanguage": { "type": "string", "enum": ["en", "hi", "es"], "description": "UI language code" },
+        "subscriptionPlan": { "type": "string", "enum": ["free", "pro_monthly", "all_access_annual"], "description": "Active subscription tier" },
+        "referralCode": { "type": "string", "description": "Unique referral code" },
+        "walletCredits": { "type": "integer", "description": "Referral reward wallet balance in INR" },
+        "studyStreakDays": { "type": "integer", "description": "Consecutive active learning days" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on creation (FieldValue.serverTimestamp())" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on update (FieldValue.serverTimestamp())" }
+      },
+      "required": ["userId", "displayName", "role", "preferredLanguage", "subscriptionPlan", "referralCode", "walletCredits", "studyStreakDays", "createdAt", "updatedAt"]
+    },
+    "CourseItem": {
+      "title": "CourseItem",
+      "description": "Published or draft commerce course managed by teachers or admins",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "teacherId": { "type": "string" },
+        "teacherName": { "type": "string" },
+        "priceInr": { "type": "integer" },
+        "durationHours": { "type": "integer" },
+        "level": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced", "Foundation"] },
+        "status": { "type": "string", "enum": ["published", "draft"] },
+        "nextLiveSession": { "type": "string" },
+        "ratingAvg": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "description", "teacherId", "teacherName", "priceInr", "durationHours", "level", "status", "createdAt", "updatedAt"]
+    },
+    "CourseReview": {
+      "title": "CourseReview",
+      "description": "Student review and star rating for a commerce course",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "courseId": { "type": "string" },
+        "rating": { "type": "integer" },
+        "comment": { "type": "string" },
+        "status": { "type": "string", "enum": ["visible"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "authorName", "courseId", "rating", "comment", "status", "createdAt", "updatedAt"]
+    },
+    "Enrollment": {
+      "title": "Enrollment",
+      "description": "Student enrollment and lesson progress for a course",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "courseId": { "type": "string" },
+        "courseTitle": { "type": "string" },
+        "category": { "type": "string" },
+        "progressPercent": { "type": "integer" },
+        "completedLessonsCount": { "type": "integer" },
+        "totalLessonsCount": { "type": "integer" },
+        "status": { "type": "string", "enum": ["active", "completed"] },
+        "enrolledAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "courseId", "courseTitle", "category", "progressPercent", "completedLessonsCount", "totalLessonsCount", "status", "enrolledAt", "updatedAt"]
+    },
+    "AttendanceRecord": {
+      "title": "AttendanceRecord",
+      "description": "Live or recorded class attendance record",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "courseId": { "type": "string" },
+        "courseTitle": { "type": "string" },
+        "sessionTitle": { "type": "string" },
+        "sessionType": { "type": "string", "enum": ["live", "recorded"] },
+        "status": { "type": "string", "enum": ["present"] },
+        "markedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "courseId", "courseTitle", "sessionTitle", "sessionType", "status", "markedAt"]
+    },
+    "QuizAttempt": {
+      "title": "QuizAttempt",
+      "description": "Completed course quiz attempt with score",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "courseId": { "type": "string" },
+        "courseTitle": { "type": "string" },
+        "quizTitle": { "type": "string" },
+        "score": { "type": "integer" },
+        "totalQuestions": { "type": "integer" },
+        "passed": { "type": "boolean" },
+        "attemptedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "courseId", "courseTitle", "quizTitle", "score", "totalQuestions", "passed", "attemptedAt"]
+    },
+    "CertificateRecord": {
+      "title": "CertificateRecord",
+      "description": "Earned completion certificate",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "courseId": { "type": "string" },
+        "courseTitle": { "type": "string" },
+        "certificateNumber": { "type": "string" },
+        "scorePercent": { "type": "integer" },
+        "issuedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "studentName", "courseId", "courseTitle", "certificateNumber", "scorePercent", "issuedAt"]
+    },
+    "PaymentRecord": {
+      "title": "PaymentRecord",
+      "description": "Course or subscription checkout transaction record",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "itemTitle": { "type": "string" },
+        "itemType": { "type": "string", "enum": ["course", "subscription"] },
+        "amountInr": { "type": "integer" },
+        "paymentMethod": { "type": "string" },
+        "status": { "type": "string", "enum": ["paid"] },
+        "transactionRef": { "type": "string" },
+        "paidAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "itemTitle", "itemType", "amountInr", "paymentMethod", "status", "transactionRef", "paidAt"]
+    },
+    "NotificationItem": {
+      "title": "NotificationItem",
+      "description": "In-app notification for live classes, quizzes, payments, and rewards",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "body": { "type": "string" },
+        "category": { "type": "string", "enum": ["live", "payment", "achievement", "referral", "system"] },
+        "isRead": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "title", "body", "category", "isRead", "createdAt"]
+    },
+    "ReferralRecord": {
+      "title": "ReferralRecord",
+      "description": "Student referral reward entry",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "referredName": { "type": "string" },
+        "referralCode": { "type": "string" },
+        "rewardInr": { "type": "integer" },
+        "status": { "type": "string", "enum": ["credited", "pending"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "referredName", "referralCode", "rewardInr", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile and preferences"
+    },
+    "/courses/{courseId}": {
+      "schema": { "$ref": "#/entities/CourseItem" },
+      "description": "Commerce course catalog and teacher-published courses"
+    },
+    "/courses/{courseId}/reviews/{reviewId}": {
+      "schema": { "$ref": "#/entities/CourseReview" },
+      "description": "Student reviews for a course"
+    },
+    "/users/{userId}/enrollments/{courseId}": {
+      "schema": { "$ref": "#/entities/Enrollment" },
+      "description": "User course enrollments and progress"
+    },
+    "/users/{userId}/attendance/{attendanceId}": {
+      "schema": { "$ref": "#/entities/AttendanceRecord" },
+      "description": "User live and recorded class attendance"
+    },
+    "/users/{userId}/quiz_attempts/{attemptId}": {
+      "schema": { "$ref": "#/entities/QuizAttempt" },
+      "description": "User quiz submissions and scores"
+    },
+    "/users/{userId}/certificates/{certificateId}": {
+      "schema": { "$ref": "#/entities/CertificateRecord" },
+      "description": "Issued completion certificates"
+    },
+    "/users/{userId}/payments/{paymentId}": {
+      "schema": { "$ref": "#/entities/PaymentRecord" },
+      "description": "Course and subscription payment receipts"
+    },
+    "/users/{userId}/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/NotificationItem" },
+      "description": "User notifications"
+    },
+    "/users/{userId}/referrals/{referralId}": {
+      "schema": { "$ref": "#/entities/ReferralRecord" },
+      "description": "User referral reward history"
+    }
+  }
+}

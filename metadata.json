@@ -1,0 +1,6 @@
+{
+  "name": "Commerce Hub",
+  "description": "Commerce Classes Hub — Modern educational platform for Accounting, Business Studies, Economics, Finance, Taxation, CA/CS Foundation, and Stock Market courses with AI doubt solving, live/recorded classes, quizzes, certificates, and Student/Teacher/Admin panels.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
